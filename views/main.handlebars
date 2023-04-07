@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Line Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+
+    <div class="chart-container">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>listing ID</th>
+          <th>listing month</th>
+          <th>listing date</th>
+          <th>site</th>
+          <th>revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each result}}
+          <tr>
+            <td>{{this.deal.id}}</td>
+            <td>{{this.month}}</td>
+            <td>{{this.deal.date}}</td>
+            <td>{{this.siteTitle}}</td>
+            <td>{{this.deal.revenue}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <script>
+      const chartData =
+      {{{chartData}}}; const chartOptions =
+      {{{chartOptions}}}; const ctx =
+      document.getElementById('myChart').getContext('2d'); const myChart = new
+      Chart(ctx, { type: 'line', data: chartData, options: { scales: { xAxes: [{
+      display: true, ticks: { autoSkip: true, maxTicksLimit: 6 } }], yAxes: [{
+      display: true }] }, plugins: { zoom: { pan: { enabled: true, mode: 'x' },
+      zoom: { enabled: true, mode: 'x', speed: 10 } } } } });
+    </script>
+  </body>
+</html>
